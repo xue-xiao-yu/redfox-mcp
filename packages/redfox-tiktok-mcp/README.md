@@ -67,7 +67,9 @@ Cursor / 其他 MCP 客户端：
 redfox-tiktok-mcp --transport http --host 0.0.0.0 --port 8000
 # 兼容旧客户端的 SSE：
 redfox-tiktok-mcp --transport sse --host 0.0.0.0 --port 8000
-# 或环境变量：REDFOX_MCP_TRANSPORT=http|sse REDFOX_MCP_HOST=0.0.0.0 REDFOX_MCP_PORT=8000
+# 若挂在反向代理前缀下（如 https://mcp.redfox.hk/tiktok/sse）：
+redfox-tiktok-mcp --transport sse --host 0.0.0.0 --port 8000 --root-path /tiktok
+# 或环境变量：REDFOX_MCP_TRANSPORT=sse REDFOX_MCP_ROOT_PATH=/tiktok
 ```
 
 - Streamable HTTP 端点：`http://<host>:8000/mcp`；SSE 端点：`http://<host>:8000/sse`；健康检查：`GET /health`
