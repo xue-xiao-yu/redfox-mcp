@@ -18,7 +18,7 @@
 
 RedFoxHub（红狐数据平台）MCP monorepo — 将 11 大内容平台 + 汽车垂类（3 家）+ AI 搜索/生成 + 下载/上传能力拆分为 15 个按平台独立的 MCP server（共 134 个工具），可被 dsh、Claude Code、Cursor 等任意 MCP 客户端直接调用。
 
-每个包都同时支持**本地 stdio**（单用户，环境变量 `REDFOX_API_KEY`）与**远程 HTTP**（多租户，按请求头传递 API Key），并自带 Dockerfile 可独立部署。
+每个包都同时支持**本地 stdio**（单用户，环境变量 `REDFOX_API_KEY`）与**远程 HTTP / SSE**（多租户，按请求头传递 API Key），并自带 Dockerfile 可独立部署。
 
 ## 包索引
 
@@ -100,7 +100,7 @@ redfox-douyin-mcp --transport http --host 0.0.0.0 --port 8000
 # 或环境变量：REDFOX_MCP_TRANSPORT=http REDFOX_MCP_HOST=0.0.0.0 REDFOX_MCP_PORT=8000
 ```
 
-- MCP 端点：`http://<host>:8000/mcp`（Streamable HTTP）；健康检查：`GET /health`
+- MCP 端点：`http://<host>:8000/mcp`（Streamable HTTP）；SSE：`http://<host>:8000/sse`（`--transport sse`）；健康检查：`GET /health`
 - 每个请求通过请求头 `X-API-Key: <key>`（或 `Authorization: Bearer <key>`）携带自己的 key，按 key 建独立客户端缓存，额度互不共享
 
 客户端配置（远程 URL + 请求头）：
@@ -115,6 +115,8 @@ redfox-douyin-mcp --transport http --host 0.0.0.0 --port 8000
   }
 }
 ```
+
+SSE 客户端将 `url` 改为 `http://<host>:8000/sse`。
 
 ## Docker 部署
 

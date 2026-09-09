@@ -16,7 +16,7 @@
 
 RedFoxHub MCP monorepo — the data APIs of 11 content platforms plus auto vertical (3 brands), AI search / generation and download/upload tools, exposed as 134 MCP tools split into 15 independent per-platform MCP servers, ready for any MCP client such as dsh, Claude Code or Cursor.
 
-Every package supports both **local stdio** (single-user, `REDFOX_API_KEY` env var) and **remote HTTP** (multi-tenant, per-request API key header), and ships its own Dockerfile for independent deployment.
+Every package supports **local stdio** (single-user, `REDFOX_API_KEY` env var) and **remote HTTP / SSE** (multi-tenant, per-request API key header), and ships its own Dockerfile for independent deployment.
 
 ## Packages
 
@@ -98,7 +98,7 @@ redfox-douyin-mcp --transport http --host 0.0.0.0 --port 8000
 # or via env vars: REDFOX_MCP_TRANSPORT=http REDFOX_MCP_HOST=0.0.0.0 REDFOX_MCP_PORT=8000
 ```
 
-- MCP endpoint: `http://<host>:8000/mcp` (Streamable HTTP); health check: `GET /health`
+- MCP endpoint: `http://<host>:8000/mcp` (Streamable HTTP); SSE: `http://<host>:8000/sse` via `--transport sse`; health check: `GET /health`
 - Each request carries its own key via header `X-API-Key: <key>` (or `Authorization: Bearer <key>`). A dedicated client is created and cached per key — quotas are never shared across users.
 
 Client-side config (remote URL + header):
@@ -113,6 +113,8 @@ Client-side config (remote URL + header):
   }
 }
 ```
+
+SSE clients should use `http://<host>:8000/sse` instead.
 
 ## Docker Deployment
 

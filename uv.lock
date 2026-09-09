@@ -40,7 +40,7 @@ resolution-markers = [
     "python_full_version < '3.11' and sys_platform != 'win32'",
 ]
 dependencies = [
-    { name = "caio", version = "0.9.25", source = { registry = "https://pypi.org/simple" } },
+    { name = "caio", version = "0.9.25", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/67/e2/d7cb819de8df6b5c1968a2756c3cb4122d4fa2b8fc768b53b7c9e5edb646/aiofile-3.9.0.tar.gz", hash = "sha256:e5ad718bb148b265b6df1b3752c4d1d83024b93da9bd599df74b9d9ffcf7919b", size = 17943, upload-time = "2024-10-08T10:39:35.846Z" }
 wheels = [
@@ -58,7 +58,7 @@ resolution-markers = [
     "python_full_version >= '3.11' and python_full_version < '3.14' and sys_platform != 'win32'",
 ]
 dependencies = [
-    { name = "caio", version = "0.12.2", source = { registry = "https://pypi.org/simple" } },
+    { name = "caio", version = "0.12.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/14/31/edb06aabd8f8f0b56d659f30800795f40b93cba96be946ce179f6931e3a5/aiofile-3.12.3.tar.gz", hash = "sha256:caa6aa746b5e47e2165f7abd741b6415e49cf4d44fddc0f61844612cc3924d41", size = 21600, upload-time = "2026-08-04T22:59:27.171Z" }
 wheels = [
@@ -597,7 +597,7 @@ name = "importlib-metadata"
 version = "9.0.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "zipp" },
+    { name = "zipp", marker = "python_full_version < '3.14'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/a9/01/15bb152d77b21318514a96f43af312635eb2500c96b55398d020c93d86ea/importlib_metadata-9.0.0.tar.gz", hash = "sha256:a4f57ab599e6a2e3016d7595cfd72eb4661a5106e787a95bcc90c7105b831efc", size = 56405, upload-time = "2026-03-20T06:42:56.999Z" }
 wheels = [
@@ -1182,7 +1182,7 @@ dependencies = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "redfox-mcp-core", editable = "packages/redfox-mcp-core" }]
+requires-dist = [{ name = "redfox-mcp-core", specifier = ">=0.1.0" }]
 
 [[package]]
 name = "redfox-ai-search-mcp"
@@ -1193,7 +1193,7 @@ dependencies = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "redfox-mcp-core", editable = "packages/redfox-mcp-core" }]
+requires-dist = [{ name = "redfox-mcp-core", specifier = ">=0.1.0" }]
 
 [[package]]
 name = "redfox-auto-mcp"
@@ -1204,7 +1204,7 @@ dependencies = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "redfox-mcp-core", editable = "packages/redfox-mcp-core" }]
+requires-dist = [{ name = "redfox-mcp-core", specifier = ">=0.1.0" }]
 
 [[package]]
 name = "redfox-bilibili-mcp"
@@ -1215,7 +1215,7 @@ dependencies = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "redfox-mcp-core", editable = "packages/redfox-mcp-core" }]
+requires-dist = [{ name = "redfox-mcp-core", specifier = ">=0.1.0" }]
 
 [[package]]
 name = "redfox-douyin-mcp"
@@ -1226,7 +1226,7 @@ dependencies = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "redfox-mcp-core", editable = "packages/redfox-mcp-core" }]
+requires-dist = [{ name = "redfox-mcp-core", specifier = ">=0.1.1" }]
 
 [[package]]
 name = "redfox-instagram-mcp"
@@ -1237,7 +1237,7 @@ dependencies = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "redfox-mcp-core", editable = "packages/redfox-mcp-core" }]
+requires-dist = [{ name = "redfox-mcp-core", specifier = ">=0.1.0" }]
 
 [[package]]
 name = "redfox-kuaishou-mcp"
@@ -1248,7 +1248,7 @@ dependencies = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "redfox-mcp-core", editable = "packages/redfox-mcp-core" }]
+requires-dist = [{ name = "redfox-mcp-core", specifier = ">=0.1.0" }]
 
 [[package]]
 name = "redfox-mcp"
@@ -1274,21 +1274,21 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
-    { name = "redfox-ai-gen-mcp", editable = "packages/redfox-ai-gen-mcp" },
-    { name = "redfox-ai-search-mcp", editable = "packages/redfox-ai-search-mcp" },
-    { name = "redfox-auto-mcp", editable = "packages/redfox-auto-mcp" },
-    { name = "redfox-bilibili-mcp", editable = "packages/redfox-bilibili-mcp" },
-    { name = "redfox-douyin-mcp", editable = "packages/redfox-douyin-mcp" },
-    { name = "redfox-instagram-mcp", editable = "packages/redfox-instagram-mcp" },
-    { name = "redfox-kuaishou-mcp", editable = "packages/redfox-kuaishou-mcp" },
-    { name = "redfox-tiktok-mcp", editable = "packages/redfox-tiktok-mcp" },
-    { name = "redfox-tools-mcp", editable = "packages/redfox-tools-mcp" },
-    { name = "redfox-toutiao-mcp", editable = "packages/redfox-toutiao-mcp" },
-    { name = "redfox-twitter-mcp", editable = "packages/redfox-twitter-mcp" },
-    { name = "redfox-wechat-channels-mcp", editable = "packages/redfox-wechat-channels-mcp" },
-    { name = "redfox-wechat-mcp", editable = "packages/redfox-wechat-mcp" },
-    { name = "redfox-xiaohongshu-mcp", editable = "packages/redfox-xiaohongshu-mcp" },
-    { name = "redfox-youtube-mcp", editable = "packages/redfox-youtube-mcp" },
+    { name = "redfox-ai-gen-mcp", specifier = ">=0.1.0" },
+    { name = "redfox-ai-search-mcp", specifier = ">=0.1.1" },
+    { name = "redfox-auto-mcp", specifier = ">=0.1.0" },
+    { name = "redfox-bilibili-mcp", specifier = ">=0.1.1" },
+    { name = "redfox-douyin-mcp", specifier = ">=0.2.0" },
+    { name = "redfox-instagram-mcp", specifier = ">=0.1.0" },
+    { name = "redfox-kuaishou-mcp", specifier = ">=0.1.0" },
+    { name = "redfox-tiktok-mcp", specifier = ">=0.1.1" },
+    { name = "redfox-tools-mcp", specifier = ">=0.1.0" },
+    { name = "redfox-toutiao-mcp", specifier = ">=0.1.1" },
+    { name = "redfox-twitter-mcp", specifier = ">=0.1.0" },
+    { name = "redfox-wechat-channels-mcp", specifier = ">=0.1.0" },
+    { name = "redfox-wechat-mcp", specifier = ">=0.2.0" },
+    { name = "redfox-xiaohongshu-mcp", specifier = ">=0.2.0" },
+    { name = "redfox-youtube-mcp", specifier = ">=0.1.0" },
 ]
 
 [[package]]
@@ -1307,19 +1307,20 @@ requires-dist = [
     { name = "cryptography", marker = "platform_machine == 'x86_64' and sys_platform == 'darwin'", specifier = "<49" },
     { name = "fastmcp", specifier = ">=2.0" },
     { name = "httpx", specifier = ">=0.24" },
-    { name = "redfox-python-sdk", directory = "../redfox-python-sdk" },
+    { name = "redfox-python-sdk", specifier = ">=0.4.0" },
 ]
 
 [[package]]
 name = "redfox-python-sdk"
 version = "0.4.0"
-source = { directory = "../redfox-python-sdk" }
+source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "httpx" },
 ]
-
-[package.metadata]
-requires-dist = [{ name = "httpx", specifier = ">=0.25.0" }]
+sdist = { url = "https://files.pythonhosted.org/packages/66/0b/3aa5b23e68ce8637bae90f2ff21ff06a09e2d958cb17d6bfba118ede307d/redfox_python_sdk-0.4.0.tar.gz", hash = "sha256:8d5a5cb6078bd07363461c358c371e1cffb9cf215d3bbda707d3a9d68231ae8b", size = 35803, upload-time = "2026-08-31T07:21:25.652Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/90/d5/b29081ea9fb3a0efeb2a22e438cc4cd5e443af46741b85fc5e34eabdd723/redfox_python_sdk-0.4.0-py3-none-any.whl", hash = "sha256:1015203881b6330fc651d3a10eba21959e5ec754544a66a7617a82cdfd4a9878", size = 42420, upload-time = "2026-08-31T07:21:22.899Z" },
+]
 
 [[package]]
 name = "redfox-tiktok-mcp"
@@ -1330,7 +1331,7 @@ dependencies = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "redfox-mcp-core", editable = "packages/redfox-mcp-core" }]
+requires-dist = [{ name = "redfox-mcp-core", specifier = ">=0.1.0" }]
 
 [[package]]
 name = "redfox-tools-mcp"
@@ -1341,7 +1342,7 @@ dependencies = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "redfox-mcp-core", editable = "packages/redfox-mcp-core" }]
+requires-dist = [{ name = "redfox-mcp-core", specifier = ">=0.1.0" }]
 
 [[package]]
 name = "redfox-toutiao-mcp"
@@ -1352,7 +1353,7 @@ dependencies = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "redfox-mcp-core", editable = "packages/redfox-mcp-core" }]
+requires-dist = [{ name = "redfox-mcp-core", specifier = ">=0.1.0" }]
 
 [[package]]
 name = "redfox-twitter-mcp"
@@ -1363,7 +1364,7 @@ dependencies = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "redfox-mcp-core", editable = "packages/redfox-mcp-core" }]
+requires-dist = [{ name = "redfox-mcp-core", specifier = ">=0.1.0" }]
 
 [[package]]
 name = "redfox-wechat-channels-mcp"
@@ -1374,7 +1375,7 @@ dependencies = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "redfox-mcp-core", editable = "packages/redfox-mcp-core" }]
+requires-dist = [{ name = "redfox-mcp-core", specifier = ">=0.1.0" }]
 
 [[package]]
 name = "redfox-wechat-mcp"
@@ -1385,7 +1386,7 @@ dependencies = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "redfox-mcp-core", editable = "packages/redfox-mcp-core" }]
+requires-dist = [{ name = "redfox-mcp-core", specifier = ">=0.1.1" }]
 
 [[package]]
 name = "redfox-xiaohongshu-mcp"
@@ -1396,7 +1397,7 @@ dependencies = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "redfox-mcp-core", editable = "packages/redfox-mcp-core" }]
+requires-dist = [{ name = "redfox-mcp-core", specifier = ">=0.1.1" }]
 
 [[package]]
 name = "redfox-youtube-mcp"
@@ -1407,7 +1408,7 @@ dependencies = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "redfox-mcp-core", editable = "packages/redfox-mcp-core" }]
+requires-dist = [{ name = "redfox-mcp-core", specifier = ">=0.1.0" }]
 
 [[package]]
 name = "referencing"
@@ -1710,8 +1711,8 @@ name = "secretstorage"
 version = "3.5.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "cryptography" },
-    { name = "jeepney" },
+    { name = "cryptography", marker = "sys_platform != 'win32'" },
+    { name = "jeepney", marker = "sys_platform != 'win32'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/1c/03/e834bcd866f2f8a49a85eaff47340affa3bfa391ee9912a952a1faa68c7b/secretstorage-3.5.0.tar.gz", hash = "sha256:f04b8e4689cbce351744d5537bf6b1329c6fc68f91fa666f60a380edddcd11be", size = 19884, upload-time = "2025-11-23T19:02:53.191Z" }
 wheels = [

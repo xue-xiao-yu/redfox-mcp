@@ -59,16 +59,18 @@ Cursor / 其他 MCP 客户端：
 }
 ```
 
-## 远程 HTTP 模式（多租户）
+## 远程 HTTP / SSE 模式（多租户）
 
 适用于 MCP 市场与托管场景，每个用户携带自己的 API Key：
 
 ```bash
 redfox-tiktok-mcp --transport http --host 0.0.0.0 --port 8000
-# 或环境变量：REDFOX_MCP_TRANSPORT=http REDFOX_MCP_HOST=0.0.0.0 REDFOX_MCP_PORT=8000
+# 兼容旧客户端的 SSE：
+redfox-tiktok-mcp --transport sse --host 0.0.0.0 --port 8000
+# 或环境变量：REDFOX_MCP_TRANSPORT=http|sse REDFOX_MCP_HOST=0.0.0.0 REDFOX_MCP_PORT=8000
 ```
 
-- MCP 端点：`http://<host>:8000/mcp`（Streamable HTTP）；健康检查：`GET /health`
+- Streamable HTTP 端点：`http://<host>:8000/mcp`；SSE 端点：`http://<host>:8000/sse`；健康检查：`GET /health`
 - 每个请求通过请求头 `X-API-Key: <key>`（或 `Authorization: Bearer <key>`）携带自己的 key，按 key 建独立客户端缓存，额度互不共享
 
 客户端配置（远程 URL + 请求头）：
@@ -83,6 +85,8 @@ redfox-tiktok-mcp --transport http --host 0.0.0.0 --port 8000
   }
 }
 ```
+
+SSE 客户端将 `url` 改为 `http://<host>:8000/sse`。
 
 ## Docker 部署
 
